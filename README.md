@@ -1,4 +1,4 @@
-Magnetic attitude controller 
+# **Magnetic attitude controller** 
 
 This research project presents a magnetic attitude controller specifically designed for educational purposes, aiming to enhance the learning experience within the Aerospace Engineering program.
 
@@ -6,7 +6,7 @@ The hardware controller consists of two coils, a Raspberry Pi Pico microcontroll
 
 The system also includes real-time visualization of received measurements in a 3D plot, facilitating the understanding of control mechanisms.
 
-Key Features of the Magnetic Attitude Controller:
+### Key Features of the Magnetic Attitude Controller:
 
 - The controller incorporates two electromagnets with ferromagnetic cores.
 - It utilizes a magnetometer (MMC5983MA) for attitude determination.
