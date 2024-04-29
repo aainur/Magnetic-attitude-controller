@@ -3,23 +3,15 @@
 
 #include <cstdint>
 
+void configurePins(); 
+
 void TurnOff(); 
 
-void Calibrate();
+void showHelp();
 
-void readData();
+void handleCommand(String command);
 
-void ReadDataCal();
-
-void GetMagMeasurements(float *scaledX, float *scaledY, float *scaledZ);
-
-bool updateOffset(uint32_t *offsetX, uint32_t *offsetY, uint32_t *offsetZ);
-
-void demagnetization(int wire1, int wire2);
-
-void randomExcitation(int wire1, int wire2, int pwm);
-
-void TriggerCoils(int coilX, int coilY, float x, float y);
+void executeCommand(String command);
 
 int sgn(float val);
 
