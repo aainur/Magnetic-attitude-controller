@@ -11,15 +11,14 @@ typedef float T_MATRIX;
 extern T_MATRIX HardIronoffset[XtX_RANK]; 
 
 void initializeMagnetometer();
-void GetMagMeasurements(float *scaledX, float *scaledY, float *scaledZ) ;
+void GetMagMeasurements(float *scaledX, float *scaledY, float *scaledZ);
 bool updateOffset(uint32_t *offsetX, uint32_t *offsetY, uint32_t *offsetZ);
 void Calibrate();
 void readData();
 void ReadDataCal();
-
+void GetCalMagMeasurements(float *scaledX, float *scaledY, float *scaledZ);
 
 void TriggerCoils(int coil,  float a);
-void demagnetization(int wire1, int wire2); 
 void randomExcitation(int wire1, int wire2, int pwm);
 
 #endif

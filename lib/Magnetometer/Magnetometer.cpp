@@ -7,8 +7,6 @@
 SFE_MMC5983MA myMag; 
 // Constants for magnetometer and coils
 int csPin = 17;   
-const float initialPWM = 1.0;  // Initial PWM value 100% (255*1)
-const float pwmStep = 0.1; 
 
 // Calibration matrices
 T_MATRIX HardIronoffset[XtX_RANK]={0,0,0,0};
@@ -98,6 +96,7 @@ void Calibrate(){
   Serial1.print("Magnetic field strength: ");
   Serial1.println(MagSensorGetMagneticFieldStrength_uT(),4);
   Serial1.println("Calibration completed");
+  delay(1000); 
 }
 
 void readData(){
@@ -113,20 +112,34 @@ void readData(){
 }
 
 void ReadDataCal(){
-  float theta_B2; 
       T_MATRIX uncalX, uncalY, uncalZ;
       GetMagMeasurements(&uncalX, &uncalY, &uncalZ); 
       T_MATRIX calX, calY, calZ;
       calX = uncalX - HardIronoffset[0];
       calY = uncalY - HardIronoffset[1];
       calZ = uncalZ - HardIronoffset[2];
-      theta_B2= atan2(calY, calX);
       Serial1.print(calX,4);
       Serial1.print(";");
       Serial1.print(calY,4);
       Serial1.print(";");
-      Serial1.println(calZ,4);
+      Serial1.print(calZ,4);
+      Serial1.println(";");
       delay(100);
+}
+
+void GetCalMagMeasurements(float *scaledX, float *scaledY, float *scaledZ) {
+    T_MATRIX uncalX, uncalY, uncalZ;
+    GetMagMeasurements(&uncalX, &uncalY, &uncalZ); 
+    *scaledX = uncalX - HardIronoffset[0];
+    *scaledY = uncalY - HardIronoffset[1];
+    *scaledZ = uncalZ - HardIronoffset[2];
+      // Serial1.print(*scaledX,4);
+      // Serial1.print(";");
+      // Serial1.print(*scaledY,4);
+      // Serial1.print(";");
+      // Serial1.print(*scaledZ,4);
+      // Serial1.print(";");
+
 }
 
 void TriggerCoils(int coil,  float a){
@@ -134,22 +147,9 @@ void TriggerCoils(int coil,  float a){
       analogWrite(coil, pwmOutput);
     }
 
-void demagnetization(int wire1, int wire2){
-    float pwmValue = initialPWM;
-   while (pwmValue >= 0.0) {
-    int pwmOutput = (int)(pwmValue * 255);  
-    analogWrite(wire1, pwmOutput);
-    analogWrite(wire2, pwmOutput);
-    pwmValue -= pwmStep;
-    delay(100);
-  }
-  analogWrite(wire1, 0);
-  analogWrite(wire2, 0);
-}
-
 void randomExcitation(int wire1, int wire2, int pwm){
   T_MATRIX tempX, tempY, tempZ;
-  T_MATRIX calX, calY, calZ;
+  T_MATRIX calX, calY;
     if(pwm>0){
       int pwmOutput = abs((int)((pwm/100) * 255));
       analogWrite(wire1, pwmOutput);
@@ -165,6 +165,6 @@ void randomExcitation(int wire1, int wire2, int pwm){
       Serial1.println(calY,4);
       analogWrite(wire2, 0);
     }
-    delay(100);
+    delay(1000);
   }
 
