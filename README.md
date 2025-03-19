@@ -18,13 +18,27 @@ The system also includes real-time visualization of received measurements in a 3
 The design and manufacturing of the PCB layout are accomplished using open-source CAD software, KiCAD. 
 Additionally, the control code is designed to detumble the rotation of the device when placed on a floating table using the Bdot algorithm and to orient itself to a required degree using PID control.
 
+Block Scheme of the system: 
+
+![BlockScheme](https://github.com/aainur/Magnetic-attitude-controller/assets/105110202/eca3d830-e87f-4729-bd57-57f36a5e48f1)
+
+PCB Schematic: 
+
+<img width="801" alt="PCB Schematic" src="https://github.com/user-attachments/assets/597bffc5-2ee1-483a-97c2-18365b35c93c" />
+
+PCB Layout:
+
+<img width="656" alt="PCB Layout" src="https://github.com/user-attachments/assets/ee83e35a-044b-44b7-a540-cd6643d579f2" />
+
 Device: 
 
 ![controller](https://github.com/aainur/Magnetic-attitude-controller/assets/105110202/6cee8e0f-1d2b-4d7b-b9ff-a0ac3b668f04)
 
-Block Scheme of the system: 
+Measurement setup: 
+![helmholtz](https://github.com/user-attachments/assets/f959f23e-d401-4639-aac7-93a593b86533)
 
-![BlockScheme](https://github.com/aainur/Magnetic-attitude-controller/assets/105110202/eca3d830-e87f-4729-bd57-57f36a5e48f1)
+Demagnetization of Coils: 
+<img width="1270" alt="demag" src="https://github.com/user-attachments/assets/74c8143f-984e-4982-94c4-6bb81deb768c" />
 
 XZ plane before calibration: 
 
@@ -38,6 +52,10 @@ XZ plane after calibration:
 Bdot detumbling measurements: 
 
 <img width="1440" alt="bdot" src="https://github.com/aainur/Magnetic-attitude-controller/assets/105110202/c04ec077-ebd2-44e6-87f0-1c76d643b7b5">
+
+
+
+
 
 
 
